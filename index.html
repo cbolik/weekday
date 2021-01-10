@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Date to Weekday</title>
+  <script>
+    function getWeekday() {
+      const dateStr = document.getElementById("name").value;
+      const dateEl = dateStr.split(".");
+      const date = new Date(dateEl[2], dateEl[1] - 1, dateEl[0]);
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      document.getElementById("weekday").innerHTML = "The " + dateStr + " was a <b>" + days[date.getDay()] + "</b>";
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Date to Weekday</h1>
+  <form id="form" onsubmit="return false">
+    Date (dd.mm.yyyy):
+    <input name="date" id="name" autofocus/>
+    <input type="button" value="Submit" id="btnsubmit" onclick="getWeekday()">
+  </form>
+  <p>
+    <span id="weekday"></span>
+  </p>
+
+  <script>
+    document.getElementById("name")
+      .addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+          document.getElementById("btnsubmit").click();
+        }
+      });
+  </script>
+</body>
+
+</html>
